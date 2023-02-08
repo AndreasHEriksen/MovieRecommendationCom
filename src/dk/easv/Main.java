@@ -15,7 +15,7 @@ public class Main extends Application {
         primaryStage.setTitle("Movie Recommendation System 0.01 Beta");
         // primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(root));
-        primaryStage.initStyle(StageStyle.UNIFIED); // Removes the titlebar
+        primaryStage.initStyle(StageStyle.TRANSPARENT); // Removes the titlebar
         primaryStage.show();
     }
 

@@ -12,4 +12,7 @@
     -fx-stroke-width: 1;
 }
 
-
+.btnExit{
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 0, 0, 1);;
+}
