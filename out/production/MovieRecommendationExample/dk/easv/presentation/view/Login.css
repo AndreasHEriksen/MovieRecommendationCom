@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
 .AnchorPane{
     -fx-background-color: linear-gradient(rgba(2, 0, 103, 1),rgba(5, 0, 35, 0.9991));
+    -fx-border-color: rgba(234, 211, 9, 1);
 }
+
+.txtWelcome {
+    -fx-font-family: 'Concert One', cursive;
+    -fx-fill: rgba(255, 0, 0, 1);
+    -fx-stroke: rgba(234, 211, 9, 1);
+    -fx-stroke-width: 1;
+}
+
+

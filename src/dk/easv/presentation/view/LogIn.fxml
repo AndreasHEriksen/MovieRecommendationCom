@@ -8,6 +8,8 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
    <bottom>
@@ -26,8 +28,13 @@
                   <TextField fx:id="userId" prefHeight="44.0" prefWidth="245.0" text="Georgi Facello" />
                </children>
             </GridPane>
-            <MFXButton buttonType="RAISED" layoutX="323.0" layoutY="251.0" onAction="#signUp" prefHeight="25.0" prefWidth="100.0" text="Sig - Up" />
+            <MFXButton buttonType="RAISED" layoutX="323.0" layoutY="251.0" onAction="#signUp" prefHeight="25.0" prefWidth="100.0" text="Sig - Op" />
             <MFXButton buttonType="RAISED" layoutX="178.0" layoutY="251.0" onAction="#logIn" prefHeight="25.0" prefWidth="100.0" text="Login" />
+            <Text fill="WHITE" layoutX="176.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtWelcome" text="Welcome 2CFREEMOVIES" textAlignment="CENTER" wrappingWidth="246.13671875">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </bottom>
