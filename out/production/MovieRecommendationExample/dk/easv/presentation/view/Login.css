@@ -14,5 +14,7 @@
 
 .btnExit{
     -fx-background-color: transparent;
-    -fx-text-fill: rgba(255, 0, 0, 1);;
+    -fx-text-fill: rgba(255, 0, 0, 1);
+    -fx-stroke: rgba(234, 211, 9, 1);
+    -fx-stroke-width: 1;
 }
