@@ -2,10 +2,6 @@
     -fx-background-color: linear-gradient(rgba(2, 0, 103, 1),rgba(5, 0, 35, 0.9991));
 }
 
-.ListView{
-    -fx-background-color: linear-gradient(rgba(2, 0, 103, 1),rgba(5, 0, 35, 0.9991));
-}
-
 .Label{
     -fx-background-color: pink;
 }
