@@ -16,7 +16,7 @@ public class Main extends Application {
         // primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.TRANSPARENT); // Removes the titlebar
-        primaryStage.showAndWait();
+        primaryStage.show();
     }
 
 
