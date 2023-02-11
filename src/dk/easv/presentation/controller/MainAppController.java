@@ -19,7 +19,7 @@ public class MainAppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 4; j++) {
-                String filename = "C:\\Users\\jonas\\Desktop\\Github ekstra\\MovieRecommendationCom\\data\\Image\\billede.png";
+                String filename = "C:\\Users\\jonas\\Desktop\\Github\\MovieRecommendationCom\\data\\Image\\billede.png";
                 ImageView imgView = new ImageView(filename);
                 imgView.setFitHeight(225);
                 imgView.setFitWidth(150);
