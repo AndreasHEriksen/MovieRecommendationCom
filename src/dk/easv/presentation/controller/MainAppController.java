@@ -1,5 +1,6 @@
 package dk.easv.presentation.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
@@ -37,4 +38,12 @@ public class MainAppController implements Initializable {
             }
        }
     }
+
+    public void handleMoreMovies(ActionEvent actionEvent) {
+
+    }
+
+    public void handleLessMovies(ActionEvent actionEvent) {
+    }
+
 }

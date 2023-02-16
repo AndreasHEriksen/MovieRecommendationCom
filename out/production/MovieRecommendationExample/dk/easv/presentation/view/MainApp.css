@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+.anchorpane{
+    -fx-background-color: linear-gradient(rgba(1, 0, 52, 0.58), rgba(8, 0, 61, 0.84));
+}
+
+.apAroundMovies{
+    -fx-background-color: rgba(200, 0, 0, 0.4);
+    -fx-border-color: rgba(234, 211, 9, 1);
+}
+
+.txtWelcome {
+    -fx-font-family: 'Concert One', cursive;
+    -fx-fill: rgba(255, 0, 0, 1);
+    -fx-stroke: rgba(234, 211, 9, 1);
+    -fx-stroke-width: 1;
+}
+
+.btnRight{
+    -fx-background-color: transparent;
+}
