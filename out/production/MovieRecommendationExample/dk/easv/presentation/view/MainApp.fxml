@@ -33,7 +33,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <Button layoutX="1379.0" layoutY="388.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btnRight">
+      <Button fx:id="btnMoreMovies" layoutX="1379.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleMoreMovies" prefHeight="81.0" prefWidth="89.0" styleClass="btnRight">
          <graphic>
             <ImageView fitHeight="64.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -42,7 +42,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="141.0" layoutY="388.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="89.0" styleClass="btnRight">
+      <Button fx:id="btnLessMovies" layoutX="141.0" layoutY="388.0" mnemonicParsing="false" onAction="#handleLessMovies" prefHeight="81.0" prefWidth="89.0" styleClass="btnRight">
          <graphic>
             <ImageView fitHeight="64.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
                <image>

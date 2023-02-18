@@ -47,8 +47,8 @@ public class LogInController implements Initializable {
             stage2.setScene(new Scene(root2));
             stage2.show();
 
-            //AppController controller = loader.getController();
-            //controller.setModel(model);
+            MainAppController controller = loader.getController();
+            controller.setModel(model);
 
         } catch (IOException e) {
             e.printStackTrace();
