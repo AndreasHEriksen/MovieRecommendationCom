@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -13,12 +14,17 @@ import javafx.scene.layout.VBox;
 
 import java.awt.*;
 import java.net.URL;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class MainAppController implements Initializable {
+    public Button btnHandleTopMoviesNotSeen;
+    public Button btnHandleTopMoviesSeen;
     private AppModel model;
     private Movie movie;
     private ObservableList<Movie> currentMovieView = null;
+    private VBox vbox = new VBox();
+    private Label label = new Label();
 
     @FXML
     public GridPane gridPaneMovies;
@@ -60,14 +66,15 @@ public class MainAppController implements Initializable {
         model.loadUsers();
         model.loadData(model.getObsLoggedInUser());
 
-        handleTopMovies();
+        handleTopMoviesNotSeen();
     }
 
-    public void handleTopMovies(){
+    public void handleTopMoviesNotSeen() {
+        gridPaneMovies.getChildren().clear();
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 4; j++) {
 
-                String filename = "C:\\Users\\thoma\\Documents\\GitHub\\MovieRecommendationCom\\data\\Image\\billede.png";
+                String filename = "C:\\SCO1 projects\\MovieRecommendationCom\\data\\Image\\billede.png";
                 ImageView imgView = new ImageView(filename);
                 imgView.setFitHeight(225);
                 imgView.setFitWidth(150);
@@ -84,7 +91,7 @@ public class MainAppController implements Initializable {
                 vbox.getChildren().add(new Label(movie.getTitle()));
 
                 //i = i -1;
-                gridPaneMovies.add(vbox,j,i);
+                gridPaneMovies.add(vbox, j, i);
 
                 //gridPaneMovies.add(imgView,0,i);
             }
@@ -99,4 +106,31 @@ public class MainAppController implements Initializable {
     public void handleLessMovies(ActionEvent actionEvent) {
     }
 
+    public void handleTopMoviesSeen(ActionEvent actionEvent) {
+        gridPaneMovies.getChildren().clear();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 4; j++) {
+
+                String filename = "C:\\SCO1 projects\\MovieRecommendationCom\\data\\Image\\billede.png";
+                ImageView imgView = new ImageView(filename);
+                imgView.setFitHeight(225);
+                imgView.setFitWidth(150);
+                currentMovieView = model.getObsTopMovieSeen();
+
+                //VBox vbox = new VBox();
+                //vbox.getChildren().add(imgView);
+
+                //gridPaneMovies.getChildren().add(vbox);
+
+
+                VBox vbox = new VBox();
+                vbox.getChildren().add(imgView);
+                var movie = currentMovieView.get(j);
+                vbox.getChildren().add(new Label(movie.getTitle()));
+
+                //i = i -1;
+                gridPaneMovies.add(vbox, j, i);
+            }
+        }
+    }
 }
