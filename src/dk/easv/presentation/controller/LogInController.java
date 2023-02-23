@@ -19,7 +19,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LogInController implements Initializable {
-    public Button btnExit;
+    @FXML
+    private Button btnExit;
     @FXML private PasswordField passwordField;
     @FXML private TextField userId;
     private AppModel model;

@@ -11,20 +11,30 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import org.jsoup.Jsoup;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
+import javax.lang.model.util.Elements;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainAppController implements Initializable {
-    public Button btnHandleTopMoviesNotSeen;
-    public Button btnHandleTopMoviesSeen;
+    @FXML
+    private Button btnHandleTopMoviesNotSeen;
+    @FXML
+    private Button btnHandleTopMoviesSeen;
     private AppModel model;
+    @FXML
     private Movie movie;
     private ObservableList<Movie> currentMovieView = null;
-    private VBox vbox = new VBox();
-    private Label label = new Label();
+
+    private int amountMovies = 0;
 
     @FXML
     public GridPane gridPaneMovies;
@@ -57,80 +67,81 @@ public class MainAppController implements Initializable {
        }*/
     }
 
-    public void setModel(AppModel model) {
+    public void setModel(AppModel model) throws IOException {
         this.model = model;
-
-
         model.getObsTopMovieNotSeen();
-
         model.loadUsers();
         model.loadData(model.getObsLoggedInUser());
-
         handleTopMoviesNotSeen();
     }
-
-    public void handleTopMoviesNotSeen() {
+    @FXML
+    private void handleTopMoviesNotSeen() throws IOException {
+        amountMovies = -1; // -1 because the method increases +1 every loop
         gridPaneMovies.getChildren().clear();
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 4; j++) {
+        currentMovieView = model.getObsTopMovieNotSeen();
+        showMovies();
+    }
+    @FXML
+    private void handleTopMoviesSeen(ActionEvent actionEvent) throws IOException {
+        amountMovies = -1; // -1 because the method increases +1 every loop
+        gridPaneMovies.getChildren().clear();
+        currentMovieView = model.getObsTopMovieSeen();
+        showMovies();
+    }
+    @FXML
+    private void handleMoreMovies(ActionEvent actionEvent) throws IOException {
+        int increaseAmount = 8;
+        if(increaseAmount > currentMovieView.size())
+        {
+            return;
+        }
+        else{
+            showMovies();
 
-                String filename = "C:\\SCO1 projects\\MovieRecommendationCom\\data\\Image\\billede.png";
-                ImageView imgView = new ImageView(filename);
-                imgView.setFitHeight(225);
-                imgView.setFitWidth(150);
-                currentMovieView = model.getObsTopMovieNotSeen();
-
-                //VBox vbox = new VBox();
-                //vbox.getChildren().add(imgView);
-
-                //gridPaneMovies.getChildren().add(vbox);
-
-                VBox vbox = new VBox();
-                vbox.getChildren().add(imgView);
-                var movie = currentMovieView.get(j);
-                vbox.getChildren().add(new Label(movie.getTitle()));
-
-                //i = i -1;
-                gridPaneMovies.add(vbox, j, i);
-
-                //gridPaneMovies.add(imgView,0,i);
             }
-
+    }
+    @FXML
+    private void handleLessMovies(ActionEvent actionEvent) throws IOException {
+        int decreaseAmount = 16;
+        if (amountMovies - decreaseAmount < -1) { // -1 Because else we wont see the last movie of the list
+            return;
+        } else {
+            amountMovies = amountMovies - decreaseAmount;
+            showMovies();
         }
     }
 
-    public void handleMoreMovies(ActionEvent actionEvent) {
-
-    }
-
-    public void handleLessMovies(ActionEvent actionEvent) {
-    }
-
-    public void handleTopMoviesSeen(ActionEvent actionEvent) {
+    private void showMovies() throws IOException {
         gridPaneMovies.getChildren().clear();
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 4; j++) {
-
-                String filename = "C:\\SCO1 projects\\MovieRecommendationCom\\data\\Image\\billede.png";
+        for (int rows = 0; rows < 2; rows++) {
+            for (int column = 0; column < 4; column++) {
+                amountMovies++;
+                movie = currentMovieView.get(amountMovies); // Gets the current gridpane value
+                // Setting up the image
+                String filename = imageChooser();
                 ImageView imgView = new ImageView(filename);
                 imgView.setFitHeight(225);
                 imgView.setFitWidth(150);
-                currentMovieView = model.getObsTopMovieSeen();
-
-                //VBox vbox = new VBox();
-                //vbox.getChildren().add(imgView);
-
-                //gridPaneMovies.getChildren().add(vbox);
-
-
+                // Instantiating the VBox
                 VBox vbox = new VBox();
                 vbox.getChildren().add(imgView);
-                var movie = currentMovieView.get(j);
                 vbox.getChildren().add(new Label(movie.getTitle()));
 
-                //i = i -1;
-                gridPaneMovies.add(vbox, j, i);
+                gridPaneMovies.add(vbox, column, rows);
             }
         }
     }
+    private String imageChooser() throws IOException {
+        String searchQuery = "https://www.google.com/search?q=" + movie.getTitle() + "&tbm=isch";
+        Document document = (Document) Jsoup.connect(searchQuery).get();
+        Elements images = (Elements) document.getElementsByTagName("img");
+
+        /*
+        Random r = new Random();
+        String filePath = "dk/easv/presentation/view/Images/Movieposters/m"+r.nextInt(24) + ".jpg";
+        return filePath;
+         */
+        return searchQuery;
+    }
+
 }
