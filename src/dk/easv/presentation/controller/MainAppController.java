@@ -11,16 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import org.jsoup.Jsoup;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
-import javax.lang.model.util.Elements;
-import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
-import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -67,7 +59,7 @@ public class MainAppController implements Initializable {
        }*/
     }
 
-    public void setModel(AppModel model) throws IOException {
+    public void setModel(AppModel model) {
         this.model = model;
         model.getObsTopMovieNotSeen();
         model.loadUsers();
@@ -75,21 +67,21 @@ public class MainAppController implements Initializable {
         handleTopMoviesNotSeen();
     }
     @FXML
-    private void handleTopMoviesNotSeen() throws IOException {
+    private void handleTopMoviesNotSeen() {
         amountMovies = -1; // -1 because the method increases +1 every loop
         gridPaneMovies.getChildren().clear();
         currentMovieView = model.getObsTopMovieNotSeen();
         showMovies();
     }
     @FXML
-    private void handleTopMoviesSeen(ActionEvent actionEvent) throws IOException {
+    private void handleTopMoviesSeen(ActionEvent actionEvent) {
         amountMovies = -1; // -1 because the method increases +1 every loop
         gridPaneMovies.getChildren().clear();
         currentMovieView = model.getObsTopMovieSeen();
         showMovies();
     }
     @FXML
-    private void handleMoreMovies(ActionEvent actionEvent) throws IOException {
+    private void handleMoreMovies(ActionEvent actionEvent) {
         int increaseAmount = 8;
         if(increaseAmount > currentMovieView.size())
         {
@@ -101,7 +93,7 @@ public class MainAppController implements Initializable {
             }
     }
     @FXML
-    private void handleLessMovies(ActionEvent actionEvent) throws IOException {
+    private void handleLessMovies(ActionEvent actionEvent) {
         int decreaseAmount = 16;
         if (amountMovies - decreaseAmount < -1) { // -1 Because else we wont see the last movie of the list
             return;
@@ -111,7 +103,7 @@ public class MainAppController implements Initializable {
         }
     }
 
-    private void showMovies() throws IOException {
+    private void showMovies() {
         gridPaneMovies.getChildren().clear();
         for (int rows = 0; rows < 2; rows++) {
             for (int column = 0; column < 4; column++) {
@@ -131,17 +123,9 @@ public class MainAppController implements Initializable {
             }
         }
     }
-    private String imageChooser() throws IOException {
-        String searchQuery = "https://www.google.com/search?q=" + movie.getTitle() + "&tbm=isch";
-        Document document = (Document) Jsoup.connect(searchQuery).get();
-        Elements images = (Elements) document.getElementsByTagName("img");
-
-        /*
+    private String imageChooser(){
         Random r = new Random();
-        String filePath = "dk/easv/presentation/view/Images/Movieposters/m"+r.nextInt(24) + ".jpg";
+        String filePath = "dk/easv/presentation/view/Images/Movieposters/m"+r.nextInt(25) + ".jpg";
         return filePath;
-         */
-        return searchQuery;
     }
-
 }
