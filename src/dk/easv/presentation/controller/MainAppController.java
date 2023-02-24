@@ -8,15 +8,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainAppController implements Initializable {
+    public Text TopMoviesNotSeen;
     @FXML
     private Button btnHandleTopMoviesNotSeen;
     @FXML
@@ -71,6 +74,10 @@ public class MainAppController implements Initializable {
         amountMovies = 0;
         gridPaneMovies.getChildren().clear();
         currentMovieView = model.getObsTopMovieNotSeen();
+        TopMoviesNotSeen.setText("Top movies you have not seen");
+
+
+
         showMovies();
     }
     @FXML
@@ -78,6 +85,8 @@ public class MainAppController implements Initializable {
         amountMovies = 0;
         gridPaneMovies.getChildren().clear();
         currentMovieView = model.getObsTopMovieSeen();
+        TopMoviesNotSeen.setText("Top movies you have seen");
+
         showMovies();
     }
     @FXML
