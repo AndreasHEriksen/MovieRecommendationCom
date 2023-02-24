@@ -68,14 +68,14 @@ public class MainAppController implements Initializable {
     }
     @FXML
     private void handleTopMoviesNotSeen() {
-        amountMovies = -1; // -1 because the method increases +1 every loop
+        amountMovies = 0;
         gridPaneMovies.getChildren().clear();
         currentMovieView = model.getObsTopMovieNotSeen();
         showMovies();
     }
     @FXML
     private void handleTopMoviesSeen(ActionEvent actionEvent) {
-        amountMovies = -1; // -1 because the method increases +1 every loop
+        amountMovies = 0;
         gridPaneMovies.getChildren().clear();
         currentMovieView = model.getObsTopMovieSeen();
         showMovies();
@@ -95,7 +95,7 @@ public class MainAppController implements Initializable {
     @FXML
     private void handleLessMovies(ActionEvent actionEvent) {
         int decreaseAmount = 16;
-        if (amountMovies - decreaseAmount < -1) { // -1 Because else we wont see the last movie of the list
+        if (amountMovies - decreaseAmount < 0) { // -1 Because else we wont see the last movie of the list
             return;
         } else {
             amountMovies = amountMovies - decreaseAmount;
@@ -107,8 +107,8 @@ public class MainAppController implements Initializable {
         gridPaneMovies.getChildren().clear();
         for (int rows = 0; rows < 2; rows++) {
             for (int column = 0; column < 4; column++) {
-                amountMovies++;
                 movie = currentMovieView.get(amountMovies); // Gets the current gridpane value
+                amountMovies++;
                 // Setting up the image
                 String filename = imageChooser();
                 ImageView imgView = new ImageView(filename);
@@ -125,7 +125,7 @@ public class MainAppController implements Initializable {
     }
     private String imageChooser(){
         Random r = new Random();
-        String filePath = "dk/easv/presentation/view/Images/Movieposters/m"+r.nextInt(25) + ".jpg";
+        String filePath = "dk/easv/presentation/view/Images/Movieposters/m"+r.nextInt(24) + ".jpg";
         return filePath;
     }
 }
