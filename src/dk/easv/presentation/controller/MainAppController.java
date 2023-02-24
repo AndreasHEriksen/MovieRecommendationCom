@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Random;
@@ -20,10 +21,6 @@ import java.util.ResourceBundle;
 
 public class MainAppController implements Initializable {
     public Text TopMoviesNotSeen;
-    @FXML
-    private Button btnHandleTopMoviesNotSeen;
-    @FXML
-    private Button btnHandleTopMoviesSeen;
     private AppModel model;
     @FXML
     private Movie movie;
@@ -37,29 +34,7 @@ public class MainAppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 4; j++) {
-                String filename = "C:\\Users\\thoma\\Documents\\GitHub\\MovieRecommendationCom\\data\\Image\\billede.png";
-                ImageView imgView = new ImageView(filename);
-                imgView.setFitHeight(225);
-                imgView.setFitWidth(150);
-                currentMovieView = model.getObsTopMovieNotSeen();
-                //var movie = currentMovieView.get(i);
-
-                //VBox vbox = new VBox();
-                //vbox.getChildren().add(imgView);
-
-                //gridPaneMovies.getChildren().add(vbox);
-
-                VBox vbox = new VBox();
-                vbox.getChildren().add(imgView);
-                vbox.getChildren().add(new Label(movie.getTitle()));
-                //i = i -1;
-                gridPaneMovies.add(vbox,j,i);
-
-                //gridPaneMovies.add(imgView,0,i);
-            }
-       }*/
+        //Todo: Have it Awesome :))
     }
 
     public void setModel(AppModel model) {
@@ -103,7 +78,7 @@ public class MainAppController implements Initializable {
     @FXML
     private void handleLessMovies(ActionEvent actionEvent) {
         int decreaseAmount = 16;
-        if (amountMovies - decreaseAmount < 0) { // -1 Because else we wont see the last movie of the list
+        if (amountMovies - decreaseAmount < 0) {
             return;
         } else {
             amountMovies = amountMovies - decreaseAmount;
@@ -146,5 +121,10 @@ public class MainAppController implements Initializable {
         rating.setStyle("-fx-text-fill: White");
         vbox.getChildren().add(rating);
         gridPaneMovies.add(vbox, column, rows);
+    }
+
+    public void handleExit(ActionEvent actionEvent) {
+            Stage stage = (Stage) gridPaneMovies.getScene().getWindow();
+            stage.close();
     }
 }

@@ -19,3 +19,8 @@
 .btnRight{
     -fx-background-color: transparent;
 }
+
+.btnExit{
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 0, 0, 1);
+}

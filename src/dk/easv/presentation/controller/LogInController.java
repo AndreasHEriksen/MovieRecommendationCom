@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,18 +35,11 @@ public class LogInController implements Initializable {
         model.loginUserFromUsername(userId.getText());
         if(model.getObsLoggedInUser()!=null){
         try {
-            /*
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Movie Recommendation System 0.01 Beta");
-            stage.show();
-             */
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainApp.fxml"));
             Parent root2 = loader.load();
             Stage stage2 = new Stage();
             stage2.setScene(new Scene(root2));
+            stage2.initStyle(StageStyle.TRANSPARENT); // Removes the titlebar
             stage2.show();
 
             MainAppController controller = loader.getController();
