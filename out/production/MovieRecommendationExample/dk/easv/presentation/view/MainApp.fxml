@@ -56,7 +56,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnHandleTopMoviesNotSeen" layoutX="115.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleTopMoviesNotSeen" text="Button" />
-      <Button fx:id="btnHandleTopMoviesSeen" layoutX="115.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleTopMoviesSeen" text="Button" />
+      <Button fx:id="btnHandleTopMoviesNotSeen" layoutX="105.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleTopMoviesNotSeen" text="Movies not seen" />
+      <Button fx:id="btnHandleTopMoviesSeen" layoutX="115.0" layoutY="209.0" mnemonicParsing="false" onAction="#handleTopMoviesSeen" text="Movies seen" />
    </children>
 </AnchorPane>
