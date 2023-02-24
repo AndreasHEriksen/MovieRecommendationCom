@@ -82,14 +82,13 @@ public class MainAppController implements Initializable {
     }
     @FXML
     private void handleMoreMovies(ActionEvent actionEvent) {
-        int increaseAmount = 8;
+        int increaseAmount = currentMovieView.size() + 8;
         if(increaseAmount > currentMovieView.size())
         {
             return;
         }
         else{
             showMovies();
-
             }
     }
     @FXML
