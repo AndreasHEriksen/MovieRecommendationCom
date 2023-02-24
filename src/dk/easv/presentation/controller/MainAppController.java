@@ -122,18 +122,29 @@ public class MainAppController implements Initializable {
                 ImageView imgView = new ImageView(filename);
                 imgView.setFitHeight(225);
                 imgView.setFitWidth(150);
-                // Instantiating the VBox
-                VBox vbox = new VBox();
-                vbox.getChildren().add(imgView);
-                vbox.getChildren().add(new Label(movie.getTitle()));
-
-                gridPaneMovies.add(vbox, column, rows);
+                //Adds the text in the right gridpane window
+                addTextToVbox(imgView, column,rows);
             }
         }
     }
+
     private String imageChooser(){
         Random r = new Random();
         String filePath = "dk/easv/presentation/view/Images/Movieposters/m"+r.nextInt(24) + ".jpg";
         return filePath;
+    }
+    private void addTextToVbox(ImageView imgView, int column, int rows) {
+        // Instantiating the VBox
+        VBox vbox = new VBox();
+        vbox.getChildren().add(imgView);
+        Label title = new Label(movie.getTitle());
+        title.setStyle("-fx-text-fill: White");
+        vbox.getChildren().add(title);
+        String averageRating = movie.getAverageRating() + "";
+        String shortRating = averageRating.substring(0,3);
+        Label rating = new Label(shortRating);
+        rating.setStyle("-fx-text-fill: White");
+        vbox.getChildren().add(rating);
+        gridPaneMovies.add(vbox, column, rows);
     }
 }
