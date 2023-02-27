@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
 .anchorpane{
-    -fx-background-color: linear-gradient(rgba(1, 0, 52, 0.58), rgba(8, 0, 61, 0.84));
+    -fx-background-color: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.80));
 }
 
 .apAroundMovies{
