@@ -6,13 +6,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -126,5 +132,26 @@ public class MainAppController implements Initializable {
     public void handleExit(ActionEvent actionEvent) {
             Stage stage = (Stage) gridPaneMovies.getScene().getWindow();
             stage.close();
+    }
+
+    public void manHandleJonas(ActionEvent actionEvent) {
+        Screen screen = Screen.getPrimary();
+        Rectangle2D bounds = screen.getVisualBounds();
+        double screenWidth = bounds.getWidth();
+        double screenHeight = bounds.getHeight();
+        for (int i = 0; i < 100; i++) {
+
+
+            Stage stage1 = new Stage();
+            ImageView imageView1 = new ImageView(new Image("dk/easv/presentation/view/Images/billede.png"));
+            StackPane pane1 = new StackPane(imageView1);
+            Scene scene1 = new Scene(pane1);
+            stage1.setTitle("JONAS JUMPSCARE");
+            stage1.setScene(scene1);
+            stage1.setX(Math.random() * (screenWidth - 300)); // Set random x position of stage2
+            stage1.setY(Math.random() * (screenHeight - 200));
+            stage1.show();
+
+        }
     }
 }
