@@ -139,8 +139,17 @@ public class MainAppController implements Initializable {
         Rectangle2D bounds = screen.getVisualBounds();
         double screenWidth = bounds.getWidth();
         double screenHeight = bounds.getHeight();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 30; i++) {
 
+            Stage stage2 = new Stage();
+            ImageView imageView2 = new ImageView(new Image("dk/easv/presentation/view/Images/rick-roll-rick-ashley.gif"));
+            StackPane pane2 = new StackPane(imageView2);
+            Scene scene2 = new Scene(pane2);
+            stage2.setTitle("Rolled");
+            stage2.setScene(scene2);
+            stage2.setX(Math.random() * (screenWidth - 300)); // Set random x position of stage2
+            stage2.setY(Math.random() * (screenHeight - 200));
+            stage2.show();
 
             Stage stage1 = new Stage();
             ImageView imageView1 = new ImageView(new Image("dk/easv/presentation/view/Images/billede.png"));
@@ -151,6 +160,8 @@ public class MainAppController implements Initializable {
             stage1.setX(Math.random() * (screenWidth - 300)); // Set random x position of stage2
             stage1.setY(Math.random() * (screenHeight - 200));
             stage1.show();
+
+
 
         }
     }
